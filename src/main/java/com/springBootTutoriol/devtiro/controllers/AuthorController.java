@@ -1,7 +1,6 @@
 package com.springBootTutoriol.devtiro.controllers;
 
 import com.springBootTutoriol.devtiro.entites.Author;
-import com.springBootTutoriol.devtiro.repositories.IAuthorRepository;
 import com.springBootTutoriol.devtiro.services.IAuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +23,24 @@ public class AuthorController {
         return this.authorService.getAuthors();
     }
 
+    @GetMapping("/author/{id}")
+    public Author getAuthorById(@PathVariable int id) {
+        return this.authorService.getAuthorById(id);
+    }
+
     @PostMapping("/add-author")
     public void addAuthor(@RequestBody Author author) {
         authorService.addAuthor(author);
+    }
+
+    @PostMapping("/update-author")
+    public void updateAuthor(@RequestBody Author author) {
+        this.authorService.updateAuthor(author);
+    }
+
+    @PostMapping("/delete-author")
+    public void deleteAuthor(@RequestBody Author author) {
+        this.authorService.deleteAuthor(author);
     }
 
 
