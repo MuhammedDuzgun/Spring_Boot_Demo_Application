@@ -3,6 +3,7 @@ package com.springBootTutoriol.devtiro.repositories.impl;
 import com.springBootTutoriol.devtiro.entites.Author;
 import com.springBootTutoriol.devtiro.repositories.IAuthorRepository;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import org.hibernate.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,15 @@ public class AuthorRepository implements IAuthorRepository {
     public void updateAuthor(Author author) {
         Session session = entityManager.unwrap(Session.class);
         session.merge(author);
+    }
+
+    @Override
+    public void updateAuthorAge(Author author) {
+        Session session = entityManager.unwrap(Session.class);
+        Query updateAuthorAgeQuery = session.createQuery("UPDATE Author SET age = :newAge WHERE id = :authorId");
+        updateAuthorAgeQuery.setParameter("authorId", author.getId());
+        updateAuthorAgeQuery.setParameter("newAge", author.getAge());
+        updateAuthorAgeQuery.executeUpdate();
     }
 
     @Override

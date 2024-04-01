@@ -14,6 +14,8 @@ public interface IAuthorService {
 
     void updateAuthor(Author author);
 
+    void updateAuthorAge(Author author);
+
     void deleteAuthor(Author author);
 
 }

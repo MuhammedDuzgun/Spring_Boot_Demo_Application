@@ -46,6 +46,12 @@ public class AuthorService implements IAuthorService {
 
     @Override
     @Transactional
+    public void updateAuthorAge(Author author) {
+        this.authorRepository.updateAuthorAge(author);
+    }
+
+    @Override
+    @Transactional
     public void deleteAuthor(Author author) {
         this.authorRepository.deleteAuthor(author);
     }

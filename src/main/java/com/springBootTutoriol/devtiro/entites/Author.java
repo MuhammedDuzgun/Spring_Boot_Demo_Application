@@ -26,6 +26,11 @@ public class Author {
         this.age = age;
     }
 
+    public Author(Long id, Integer age) {
+        this.id = id;
+        this.age = age;
+    }
+
     public Author(String name, Integer age) {
         this.name = name;
         this.age = age;
