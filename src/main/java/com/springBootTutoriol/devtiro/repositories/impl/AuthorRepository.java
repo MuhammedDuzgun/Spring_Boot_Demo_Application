@@ -57,6 +57,15 @@ public class AuthorRepository implements IAuthorRepository {
     }
 
     @Override
+    public void updateAuthorName(Author author) {
+        Session session = entityManager.unwrap(Session.class);
+        Query updateAuthorNameQuery = session.createQuery("UPDATE Author SET name = :newName WHERE id = :authorId");
+        updateAuthorNameQuery.setParameter("authorId" , author.getId());
+        updateAuthorNameQuery.setParameter("newName" , author.getName());
+        updateAuthorNameQuery.executeUpdate();
+    }
+
+    @Override
     public void deleteAuthor(Author author) {
         Session session = entityManager.unwrap(Session.class);
         Author authorToDelete = session.get(Author.class, author.getId());

@@ -38,9 +38,14 @@ public class AuthorController {
         this.authorService.updateAuthor(author);
     }
 
-    @PatchMapping("update-author-age")
-    public void patchUpdateAuthor(@RequestBody Author author) {
+    @PatchMapping("/update-author-age")
+    public void updateAuthorAge(@RequestBody Author author) {
         this.authorService.updateAuthorAge(author);
+    }
+
+    @PatchMapping("/update-author-name")
+    public void updateAuthorName(@RequestBody Author author) {
+        this.authorService.updateAuthorName(author);
     }
 
     @PostMapping("/delete-author")

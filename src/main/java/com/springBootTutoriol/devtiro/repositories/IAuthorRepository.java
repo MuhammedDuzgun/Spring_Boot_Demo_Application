@@ -16,6 +16,8 @@ public interface IAuthorRepository {
 
     void updateAuthorAge(Author author);
 
+    void updateAuthorName(Author author);
+
     void deleteAuthor(Author author);
 
 }
