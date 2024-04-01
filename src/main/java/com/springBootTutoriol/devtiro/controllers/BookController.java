@@ -38,6 +38,11 @@ public class BookController {
         this.bookService.updateBook(book);
     }
 
+    @PatchMapping("/update-book-title")
+    public void updateBookTitle(@RequestBody Book book) {
+        this.bookService.updateBookTitle(book);
+    }
+
     @DeleteMapping("/delete-book")
     public void deleteBook(@RequestBody Book book) {
         this.bookService.deleteBook(book);

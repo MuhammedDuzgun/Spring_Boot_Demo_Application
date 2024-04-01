@@ -3,6 +3,7 @@ package com.springBootTutoriol.devtiro.repositories.impl;
 import com.springBootTutoriol.devtiro.entites.Book;
 import com.springBootTutoriol.devtiro.repositories.IBookRepository;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -43,6 +44,15 @@ public class BookRepository implements IBookRepository {
     public void updateBook(Book book) {
         Session session = entityManager.unwrap(Session.class);
         session.merge(book);
+    }
+
+    @Override
+    public void updateBookTitle(Book book) {
+        Session session = entityManager.unwrap(Session.class);
+        Query updateBookTitleQuery = session.createQuery("UPDATE Book SET title = :newTitle WHERE id = :bookId");
+        updateBookTitleQuery.setParameter("newTitle", book.getTitle());
+        updateBookTitleQuery.setParameter("bookId", book.getId());
+        updateBookTitleQuery.executeUpdate();
     }
 
     @Override
