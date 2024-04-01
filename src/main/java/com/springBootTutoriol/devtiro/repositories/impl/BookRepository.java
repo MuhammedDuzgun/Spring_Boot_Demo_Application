@@ -56,6 +56,15 @@ public class BookRepository implements IBookRepository {
     }
 
     @Override
+    public void updateBookAuthorName(Book book) {
+        Session session = entityManager.unwrap(Session.class);
+        Query updateBookAuthorName = session.createQuery("UPDATE Book SET authorName = :newAuthorName WHERE id = :bookId");
+        updateBookAuthorName.setParameter("newAuthorName", book.getAuthorName());
+        updateBookAuthorName.setParameter("bookId" , book.getId());
+        updateBookAuthorName.executeUpdate();
+    }
+
+    @Override
     public void deleteBook(Book book) {
         Session session = entityManager.unwrap(Session.class);
         Book bookToDelete = session.get(Book.class, book.getId());

@@ -43,6 +43,11 @@ public class BookController {
         this.bookService.updateBookTitle(book);
     }
 
+    @PatchMapping("/update-book-authorname")
+    public void updateBookAuthorName(@RequestBody Book book) {
+        this.bookService.updateBookAuthorName(book);
+    }
+
     @DeleteMapping("/delete-book")
     public void deleteBook(@RequestBody Book book) {
         this.bookService.deleteBook(book);

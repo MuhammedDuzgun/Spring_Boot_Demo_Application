@@ -16,6 +16,8 @@ public interface IBookRepository {
 
     void updateBookTitle(Book book);
 
+    void updateBookAuthorName(Book book);
+
     void deleteBook(Book book);
 
 }

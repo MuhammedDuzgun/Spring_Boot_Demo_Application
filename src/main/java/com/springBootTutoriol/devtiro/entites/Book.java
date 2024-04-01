@@ -31,6 +31,10 @@ public class Book {
         this.title = title;
     }
 
+    public Book(String authorName, int id) {
+        this.authorName = authorName;
+        this.id = id;
+    }
 
     public int getId() {
         return id;

@@ -52,6 +52,12 @@ public class BookService implements IBookService {
 
     @Override
     @Transactional
+    public void updateBookAuthorName(Book book) {
+        this.bookRepository.updateBookAuthorName(book);
+    }
+
+    @Override
+    @Transactional
     public void deleteBook(Book book) {
         this.bookRepository.deleteBook(book);
     }
